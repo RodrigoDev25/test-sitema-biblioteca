@@ -13,28 +13,32 @@ function createBook(nome, autor, anoPublicacao, categoria) {
         return "ERROR: Ano de publicação é obrigatório."
     }
 
+    if(!categoria) {
+        return "ERROR: Categoria é obrigatório."
+    }
+
     const novoLivro = bibliotecaModel.criarLivro(nome, autor, anoPublicacao, categoria)
     return novoLivro;
 }
 function listarLivros() {
-  return bibliotecaModel.buscarTodosOsLivros();
+  return bibliotecaModel.listarTodosLivros();
 }
 
 function buscarLivroPorNome(titulo) {
   if (!titulo) {
     return "Erro: Título é obrigatório para busca";
   }
-
-  return bibliotecaModel.buscarLivroPorNome(titulo);
+  return bibliotecaModel.buscarLivrosPorNome(titulo)
 }
 
 function buscarLivroPorCategoria(categoria) {
   if (!categoria) {
     return "Erro: Categoria é obrigatória para busca";
   }
-
-  return bibliotecaModel.buscarLivroPorCategoria(categoria);
+  return bibliotecaModel.buscarLivroPorCategoria(categoria)
 }
+
+
 
 module.exports = {
     createBook,

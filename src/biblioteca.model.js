@@ -14,17 +14,19 @@ function criarLivro(nome, autor, anoPublicacao, categoria) {
     return novoLivro
 }
 
-function listarTodosLivro() {}
+function listarTodosLivro() {
+    return livros;
+}
 
 function buscarLivrosPorNome(nome) {
-    const filtrarLivros = buscarLivrosPorNome.find((livro) => livro.nome === nome)
-    return filtrarLivros
+    return livros.find((livro) => livro.nome === nome);
 }
 
 function buscarLivroPorCategoria(categoria) {
-    const filtrarLivros = livros.find((livro) => livro.categoria === categoria)
-    return filtrarLivros
+    const buscarCategoria = livros.find((livro) => livro.categoria === categoria);
+     return buscarCategoria;
 }
+
 
 module.exports = {
     criarLivro,

@@ -1,5 +1,5 @@
 const bibliotecaService = require("./biblioteca.service")
-const bibliotecaModel = require("./biblioteca.model")
+
 
 test("Verificar se o nome do livro é obrigatório", () => {
     const teste = bibliotecaService.createBook("",)
@@ -17,14 +17,25 @@ test("Verificar se o ano de piblicação do livro é obrigatório", () => {
 } )
 
 test("Verificar se esta sendo criado um cadastro de livro", () => {
-    const teste = bibliotecaService.createBook("Harry Potter", "J.K. Rowlling", "1997")
+    const teste = bibliotecaService.createBook("Harry Potter", "J.K. Rowlling", "1997", "categoria")
     expect(teste.nome).toBe("Harry Potter")
 
 } )
 
 //___________________//
-test("Verificar se está retornando a busca com sucesso", () => {
-    const teste = bibliotecaService.buscarLivrosPorNome("Rodrigo")
-    expect(teste).toBe("Rodrigo")
+test("Verificar se está retornando a busca por nome com sucesso", () => {
+    bibliotecaService.createBook("Nome1", "Autor1", "2000", "categoria1")
+    const teste = bibliotecaService.buscarLivroPorNome("Nome1")
+    expect(teste.nome).toBe("Nome1")
+} )
 
+test("Verificar se a o título do livro está vazio e retornando erro", () => {
+    const teste = bibliotecaService.buscarLivroPorNome("")
+    expect(teste).toBe("Erro: Título é obrigatório para busca")
+} )
+
+test("Verificar se está retornando a busca por nome com sucesso", () => {
+    bibliotecaService.createBook("Nome2", "Autor2", "2000", "categoria2")
+    const teste = bibliotecaService.buscarLivroPorCategoria("categoria2")
+    expect(teste.categoria).toBe("categoria2")
 } )
