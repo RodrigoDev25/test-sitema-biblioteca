@@ -5,19 +5,19 @@ function criarLivro(nome, autor, anoPublicacao, categoria) {
         id: 123,
         nome: nome,
         autor: autor,
-        ano_publicacao: anoPuplicacao,
+        ano_publicacao: anoPublicacao,
         categoria: categoria || "Geral"
     }
 
-    listarLivrosPorNome.push(novoLivro)
+    livros.push(novoLivro)
 
     return novoLivro
 }
 
 function listarTodosLivro() {}
 
-function listarLivrosPorNome(nome) {
-    const filtrarLivros = listarLivrosPorNome.find(find => livro.nome === nome)
+function buscarLivrosPorNome(nome) {
+    const filtrarLivros = buscarLivrosPorNome.find((livro) => livro.nome === nome)
     return filtrarLivros
 }
 
@@ -29,6 +29,6 @@ function buscarLivroPorCategoria(categoria) {
 module.exports = {
     criarLivro,
     listarTodosLivro,
-    listarLivrosPorNome,
+    buscarLivrosPorNome,
     buscarLivroPorCategoria
 }

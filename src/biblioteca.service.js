@@ -1,6 +1,6 @@
 const bibliotecaModel = require("./biblioteca.model")
 
-function createBook(nome, autor, ano_publicacao, categoria) {
+function createBook(nome, autor, anoPublicacao, categoria) {
     if(!nome) {
         return "ERROR: Nome é obrigatório."
     }
@@ -16,7 +16,29 @@ function createBook(nome, autor, ano_publicacao, categoria) {
     const novoLivro = bibliotecaModel.criarLivro(nome, autor, anoPublicacao, categoria)
     return novoLivro;
 }
+function listarLivros() {
+  return bibliotecaModel.buscarTodosOsLivros();
+}
+
+function buscarLivroPorNome(titulo) {
+  if (!titulo) {
+    return "Erro: Título é obrigatório para busca";
+  }
+
+  return bibliotecaModel.buscarLivroPorNome(titulo);
+}
+
+function buscarLivroPorCategoria(categoria) {
+  if (!categoria) {
+    return "Erro: Categoria é obrigatória para busca";
+  }
+
+  return bibliotecaModel.buscarLivroPorCategoria(categoria);
+}
 
 module.exports = {
-    createBook
+    createBook,
+    listarLivros,
+    buscarLivroPorNome,
+    buscarLivroPorCategoria
 }
